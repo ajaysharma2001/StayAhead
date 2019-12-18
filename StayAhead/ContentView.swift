@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
+        formatter.timeStyle = .short
         return formatter
     }
     
@@ -101,6 +101,7 @@ struct ContentView: View {
                     Text("Select desired arrival time")
                         .font(.title)
                         .minimumScaleFactor(0.7)
+                    
                     DatePicker(selection: self.$selectedDate, in: Date()...) {
                         Text("")
                     }.padding(30)
