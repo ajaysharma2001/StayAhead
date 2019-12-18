@@ -102,7 +102,7 @@ struct ContentView: View {
                         .font(.title)
                         .minimumScaleFactor(0.7)
                     
-                    DatePicker(selection: self.$selectedDate, in: Date()...) {
+                    DatePicker(selection: self.$selectedDate, in: Date()..., displayedComponents: .hourAndMinute) {
                         Text("")
                     }.padding(30)
                     
