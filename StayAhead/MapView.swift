@@ -87,43 +87,39 @@ struct MapView: UIViewRepresentable {
             
             if (!(points[0].latitude == 0) && !(points[0].longitude == 0) && !(points[1].latitude == 0) && !(points[1].longitude == 0)) {
                 
-                let origin = "\(points[0].latitude),\(points[0].longitude)"
-                let destination = "\(points[1].latitude),\(points[1].longitude)"
+                let config = URLSessionConfiguration.default
+                let session = URLSession(configuration: config)
 
-                let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyBkeE_oo-UBzD4_10zxtCzsHO22G2GFQ34"
+                let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(points[0].latitude),\(points[0].longitude)&destination=\(points[1].latitude),\(points[1].longitude)&sensor=false&mode=driving&key=AIzaSyBkeE_oo-UBzD4_10zxtCzsHO22G2GFQ34")!
 
-                let url = URL(string: urlString)
-                URLSession.shared.dataTask(with: url!, completionHandler: {
+                let task = session.dataTask(with: url, completionHandler: {
                     (data, response, error) in
-                    if(error != nil){
-                        print("error")
-                    }else{
-                        do{
-                            let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
-                            let routes = json["routes"] as! NSArray
-                            mapView.clear()
+                    if error != nil {
+                        print(error!.localizedDescription)
+                    } else {
+                        do {
+                            if let json : [String:Any] = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
 
-                            OperationQueue.main.addOperation({
-                                for route in routes
-                                {
-                                    let routeOverviewPolyline:NSDictionary = (route as! NSDictionary).value(forKey: "overview_polyline") as! NSDictionary
-                                    let points = routeOverviewPolyline.object(forKey: "points")
-                                    let path = GMSPath.init(fromEncodedPath: points! as! String)
-                                    let polyline = GMSPolyline.init(path: path)
-                                    polyline.strokeWidth = 3
+                                let preRoutes = json["routes"] as! NSArray
+                                let routes = preRoutes[0] as! NSDictionary
+                                let routeOverviewPolyline:NSDictionary = routes.value(forKey: "overview_polyline") as! NSDictionary
+                                let polyString = routeOverviewPolyline.object(forKey: "points") as! String
 
-                                    let bounds = GMSCoordinateBounds(path: path!)
-                                    mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 30.0))
-
+                                DispatchQueue.main.async(execute: {
+                                    let path = GMSPath(fromEncodedPath: polyString)
+                                    let polyline = GMSPolyline(path: path)
+                                    polyline.strokeWidth = 5.0
+                                    polyline.strokeColor = UIColor.green
                                     polyline.map = mapView
+                                })
+                            }
 
-                                }
-                            })
-                        }catch let error as NSError{
-                            print("error:\(error)")
+                        } catch {
+                            print("parsing error")
                         }
                     }
-                }).resume()
+                })
+                task.resume()
             }
                 
         }
