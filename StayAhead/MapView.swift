@@ -11,13 +11,15 @@ import GoogleMaps
 import UIKit
 import MapKit
 
+var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2DMake(0, 0), CLLocationCoordinate2DMake(0, 0)]
+
 struct MapView: UIViewRepresentable {
     let marker : GMSMarker = GMSMarker()
-    @State var setStart: Bool
-    @State var setEnd: Bool
+    @State var setStart: Binding<Bool>
+    @State var setEnd: Binding<Bool>
     
     func makeCoordinator() -> MapView.Coordinator {
-        Coordinator(start: $setStart)
+        Coordinator(start: setStart)
     }
     
     let startTap = CLLocationCoordinate2DMake(43.47117332874348, -80.54760977625847)
@@ -56,22 +58,74 @@ struct MapView: UIViewRepresentable {
         init(start: Binding<Bool>) {
             _start = start
         }
+        
 
         
         func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-            print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
             
-            print(start)
-            
-            let marker = GMSMarker(position: coordinate)
-            marker.title = "Start"
+            mapView.clear()
+
             if start {
-                marker.icon = GMSMarker.markerImage(with: .red)
+                points[0] = coordinate
+                
             }
             else {
-                marker.icon = GMSMarker.markerImage(with: .blue)
+                points[1] = coordinate
             }
-            marker.map = mapView
+            
+            let startMarker = GMSMarker(position: points[0])
+            let endMarker = GMSMarker(position: points[1])
+            
+            startMarker.title = "Start"
+            endMarker.title = "End"
+            
+            startMarker.icon = GMSMarker.markerImage(with: .red)
+            endMarker.icon = GMSMarker.markerImage(with: .blue)
+            
+            startMarker.map = mapView
+            endMarker.map = mapView
+            
+            if (!(points[0].latitude == 0) && !(points[0].longitude == 0) && !(points[1].latitude == 0) && !(points[1].longitude == 0)) {
+                
+                let origin = "\(points[0].latitude),\(points[0].longitude)"
+                let destination = "\(points[1].latitude),\(points[1].longitude)"
+
+                let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyBkeE_oo-UBzD4_10zxtCzsHO22G2GFQ34"
+
+                let url = URL(string: urlString)
+                URLSession.shared.dataTask(with: url!, completionHandler: {
+                    (data, response, error) in
+                    if(error != nil){
+                        print("error")
+                    }else{
+                        do{
+                            let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String : AnyObject]
+                            let routes = json["routes"] as! NSArray
+                            mapView.clear()
+
+                            OperationQueue.main.addOperation({
+                                for route in routes
+                                {
+                                    let routeOverviewPolyline:NSDictionary = (route as! NSDictionary).value(forKey: "overview_polyline") as! NSDictionary
+                                    let points = routeOverviewPolyline.object(forKey: "points")
+                                    let path = GMSPath.init(fromEncodedPath: points! as! String)
+                                    let polyline = GMSPolyline.init(path: path)
+                                    polyline.strokeWidth = 3
+
+                                    let bounds = GMSCoordinateBounds(path: path!)
+                                    mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 30.0))
+
+                                    polyline.map = mapView
+
+                                }
+                            })
+                        }catch let error as NSError{
+                            print("error:\(error)")
+                        }
+                    }
+                }).resume()
+            }
+                
         }
         
     }
@@ -81,10 +135,11 @@ struct MapView: UIViewRepresentable {
 
 
 
-
+/*
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(setStart: true, setEnd: true)
+        MapView(setStart: $Bool, setEnd: Binding<true>)
     }
 }
 
+*/

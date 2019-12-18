@@ -19,18 +19,12 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                VStack {
-                    MapView(setStart: self.setStart, setEnd: self.setEnd)
-                }
-                
-            
-                
-                
+                MapView(setStart: self.$setStart, setEnd: self.$setEnd)
+
                 HStack {
                     Button(action: {
                         self.setStart = true
                         self.setEnd = false
-                        print("start")
                     }) {
                        Text("Start")
                     }
@@ -38,7 +32,6 @@ struct ContentView: View {
                     Button(action: {
                         self.setEnd = true
                         self.setStart = false
-                        print("end")
                     }) {
                        Text("End")
                     }

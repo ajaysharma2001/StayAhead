@@ -8,4 +8,6 @@ target 'StayAhead' do
   # Pods for StayAhead
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GooglePlacesAPI'
+  pod 'SwiftyJSON'
 end
