@@ -27,10 +27,6 @@ struct MapView: UIViewRepresentable {
 
     /// Creates a `UIView` instance to be presented.
     func makeUIView(context: Self.Context) -> GMSMapView {
-        
-        
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
 
         
         let camera = GMSCameraPosition.camera(withLatitude: 43.47, longitude: -80.548, zoom: 14.5)
