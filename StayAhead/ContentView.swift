@@ -19,7 +19,9 @@ struct ContentView: View {
                     Text("End")
                     Text("Arrival Time")
                 }
+                .padding(.bottom, geometry.size.height/3)
             }
+            
         }
         
         
