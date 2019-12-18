@@ -32,10 +32,13 @@ struct ContentView: View {
                                 .renderingMode(.original)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 30, height: 50)
                             Text("Start")
-                                .fontWeight(.semibold)
-                                .font(.title)
+                                .fontWeight(.bold)
+                                .font(.largeTitle)
+                                .minimumScaleFactor(0.5)
+                            
+                            
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 20)
                     .padding()
@@ -53,10 +56,11 @@ struct ContentView: View {
                                 .renderingMode(.original)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 30, height: 50)
                             Text("End")
                                 .fontWeight(.semibold)
                                 .font(.title)
+                                .minimumScaleFactor(0.5)
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 20)
                     .padding()
