@@ -85,10 +85,12 @@ struct MapView: UIViewRepresentable {
             
             if (!(points[0].latitude == 0) && !(points[0].longitude == 0) && !(points[1].latitude == 0) && !(points[1].longitude == 0)) {
                 
+                
+                
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
 
-                let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(points[0].latitude),\(points[0].longitude)&destination=\(points[1].latitude),\(points[1].longitude)&sensor=false&mode=driving&key=AIzaSyBkeE_oo-UBzD4_10zxtCzsHO22G2GFQ34")!
+                let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(points[0].latitude),\(points[0].longitude)&destination=\(points[1].latitude),\(points[1].longitude)&sensor=false&mode=walking&key=AIzaSyBkeE_oo-UBzD4_10zxtCzsHO22G2GFQ34")!
 
                 let task = session.dataTask(with: url, completionHandler: {
                     (data, response, error) in
@@ -100,6 +102,7 @@ struct MapView: UIViewRepresentable {
 
                                 let preRoutes = json["routes"] as! NSArray
                                 let routes = preRoutes[0] as! NSDictionary
+                                print(routes[1])
                                 let routeOverviewPolyline:NSDictionary = routes.value(forKey: "overview_polyline") as! NSDictionary
                                 let polyString = routeOverviewPolyline.object(forKey: "points") as! String
 
