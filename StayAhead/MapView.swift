@@ -12,6 +12,7 @@ import UIKit
 import MapKit
 
 var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2DMake(0, 0), CLLocationCoordinate2DMake(0, 0)]
+var travelTime: String = "____________"
 
 struct MapView: UIViewRepresentable {
     let marker : GMSMarker = GMSMarker()
@@ -102,7 +103,11 @@ struct MapView: UIViewRepresentable {
 
                                 let preRoutes = json["routes"] as! NSArray
                                 let routes = preRoutes[0] as! NSDictionary
-                                print(routes[1])
+                                let legs = routes["legs"] as! NSArray
+                                let info = legs[0] as! NSDictionary
+                                let duration = info["duration"] as! NSObject
+                                print(duration.value(forKey: "text") as! String)
+                                travelTime = duration.value(forKey: "text") as! String
                                 let routeOverviewPolyline:NSDictionary = routes.value(forKey: "overview_polyline") as! NSDictionary
                                 let polyString = routeOverviewPolyline.object(forKey: "points") as! String
 
