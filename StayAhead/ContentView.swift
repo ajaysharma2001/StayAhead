@@ -7,16 +7,41 @@
 //
 
 import SwiftUI
+import GoogleMaps
+import MapKit
+
+//MKMapView().convert(<#T##point: CGPoint##CGPoint#>, toCoordinateFrom: <#T##UIView?#>)
 
 struct ContentView: View {
+    @State var setStart: Bool
+    @State var setEnd: Bool
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                MapView()
+                VStack {
+                    MapView(setStart: self.setStart, setEnd: self.setEnd)
+                }
+                
+            
+                
                 
                 HStack {
-                    Text("Start")
-                    Text("End")
+                    Button(action: {
+                        self.setStart = true
+                        self.setEnd = false
+                        print("start")
+                    }) {
+                       Text("Start")
+                    }
+                    
+                    Button(action: {
+                        self.setEnd = true
+                        self.setStart = false
+                        print("end")
+                    }) {
+                       Text("End")
+                    }
                     Text("Arrival Time")
                 }
                 .padding(.bottom, geometry.size.height/3)
@@ -28,8 +53,10 @@ struct ContentView: View {
     }
 }
 
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(setStart: true, setEnd: false)
     }
 }

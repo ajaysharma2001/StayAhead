@@ -13,6 +13,8 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     let marker : GMSMarker = GMSMarker()
+    @State var setStart: Bool
+    @State var setEnd: Bool
 
     /// Creates a `UIView` instance to be presented.
     func makeUIView(context: Self.Context) -> GMSMapView {
@@ -36,9 +38,10 @@ struct MapView: UIViewRepresentable {
 
 }
 
+
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(setStart: true, setEnd: true)
     }
 }
 
