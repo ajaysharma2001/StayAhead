@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D100F7123A9993000FD5773 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D100F7023A9993000FD5773 /* MapView.swift */; };
+		2D7D4D3B23AAB15F00AF87D6 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D4D3A23AAB15F00AF87D6 /* DrawRoute.swift */; };
 		2DC251E823A98A2600743E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC251E723A98A2600743E75 /* AppDelegate.swift */; };
 		2DC251EA23A98A2600743E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC251E923A98A2600743E75 /* SceneDelegate.swift */; };
 		2DC251ED23A98A2600743E75 /* StayAhead.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DC251EB23A98A2600743E75 /* StayAhead.xcdatamodeld */; };
@@ -22,6 +23,7 @@
 		0660223C4ED9560802C78C4B /* Pods-StayAhead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayAhead.release.xcconfig"; path = "Target Support Files/Pods-StayAhead/Pods-StayAhead.release.xcconfig"; sourceTree = "<group>"; };
 		126736DEB4208A8693575879 /* Pods-StayAhead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayAhead.debug.xcconfig"; path = "Target Support Files/Pods-StayAhead/Pods-StayAhead.debug.xcconfig"; sourceTree = "<group>"; };
 		2D100F7023A9993000FD5773 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2D7D4D3A23AAB15F00AF87D6 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		2DC251E423A98A2600743E75 /* StayAhead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayAhead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC251E723A98A2600743E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC251E923A98A2600743E75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				2DC251F023A98A2900743E75 /* Assets.xcassets */,
 				2DC251F523A98A2900743E75 /* LaunchScreen.storyboard */,
 				2D100F7023A9993000FD5773 /* MapView.swift */,
+				2D7D4D3A23AAB15F00AF87D6 /* DrawRoute.swift */,
 				2DC251F823A98A2900743E75 /* Info.plist */,
 				2DC251EB23A98A2600743E75 /* StayAhead.xcdatamodeld */,
 				2DC251F223A98A2900743E75 /* Preview Content */,
@@ -225,6 +228,7 @@
 				2D100F7123A9993000FD5773 /* MapView.swift in Sources */,
 				2DC251EF23A98A2600743E75 /* ContentView.swift in Sources */,
 				2DC251EA23A98A2600743E75 /* SceneDelegate.swift in Sources */,
+				2D7D4D3B23AAB15F00AF87D6 /* DrawRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

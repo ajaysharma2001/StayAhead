@@ -12,16 +12,16 @@ import UIKit
 import MapKit
 
 struct MapView: UIViewRepresentable {
-    func makeCoordinator() -> MapView.Coordinator {
-        Coordinator()
-    }
-    
     let marker : GMSMarker = GMSMarker()
     @State var setStart: Bool
     @State var setEnd: Bool
     
-    let startTap = 250
-    let endTap = 250
+    func makeCoordinator() -> MapView.Coordinator {
+        Coordinator(start: $setStart)
+    }
+    
+    let startTap = CLLocationCoordinate2DMake(43.47117332874348, -80.54760977625847)
+    let endTap = CLLocationCoordinate2DMake(43.47350912482179, -80.54404780268669)
     
 
     /// Creates a `UIView` instance to be presented.
@@ -45,19 +45,40 @@ struct MapView: UIViewRepresentable {
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
         // Creates a marker in the center of the map.
         
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        //mapView.drawPolygon(from: startTap, to: endTap)
+
     }
     
     class Coordinator: NSObject, GMSMapViewDelegate {
-        func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        
+        @Binding var start: Bool
+        
+        init(start: Binding<Bool>) {
+            _start = start
+        }
+
+        
+        func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
             print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+            
+            
+            
+            let marker = GMSMarker(position: coordinate)
+            marker.title = "Start"
+            if start {
+                marker.icon = GMSMarker.markerImage(with: .red)
+            }
+            else {
+                marker.icon = GMSMarker.markerImage(with: .blue)
+            }
+            marker.map = mapView
         }
         
     }
 
 }
+
+
 
 
 
