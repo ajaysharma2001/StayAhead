@@ -61,7 +61,7 @@ struct MapView: UIViewRepresentable {
         func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
             print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
             
-            
+            print(start)
             
             let marker = GMSMarker(position: coordinate)
             marker.title = "Start"
