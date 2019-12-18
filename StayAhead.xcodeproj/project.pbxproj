@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D100F7123A9993000FD5773 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D100F7023A9993000FD5773 /* MapView.swift */; };
 		2DC251E823A98A2600743E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC251E723A98A2600743E75 /* AppDelegate.swift */; };
 		2DC251EA23A98A2600743E75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC251E923A98A2600743E75 /* SceneDelegate.swift */; };
 		2DC251ED23A98A2600743E75 /* StayAhead.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DC251EB23A98A2600743E75 /* StayAhead.xcdatamodeld */; };
@@ -14,9 +15,13 @@
 		2DC251F123A98A2900743E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC251F023A98A2900743E75 /* Assets.xcassets */; };
 		2DC251F423A98A2900743E75 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC251F323A98A2900743E75 /* Preview Assets.xcassets */; };
 		2DC251F723A98A2900743E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC251F523A98A2900743E75 /* LaunchScreen.storyboard */; };
+		AF2960F0D2FF30C20AE924A3 /* Pods_StayAhead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F113086B0B3D813A4332D8E /* Pods_StayAhead.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0660223C4ED9560802C78C4B /* Pods-StayAhead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayAhead.release.xcconfig"; path = "Target Support Files/Pods-StayAhead/Pods-StayAhead.release.xcconfig"; sourceTree = "<group>"; };
+		126736DEB4208A8693575879 /* Pods-StayAhead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayAhead.debug.xcconfig"; path = "Target Support Files/Pods-StayAhead/Pods-StayAhead.debug.xcconfig"; sourceTree = "<group>"; };
+		2D100F7023A9993000FD5773 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2DC251E423A98A2600743E75 /* StayAhead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayAhead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC251E723A98A2600743E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC251E923A98A2600743E75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +31,7 @@
 		2DC251F323A98A2900743E75 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2DC251F623A98A2900743E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DC251F823A98A2900743E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F113086B0B3D813A4332D8E /* Pods_StayAhead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StayAhead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF2960F0D2FF30C20AE924A3 /* Pods_StayAhead.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +51,8 @@
 			children = (
 				2DC251E623A98A2600743E75 /* StayAhead */,
 				2DC251E523A98A2600743E75 /* Products */,
+				59695C70357C36C3275FE289 /* Pods */,
+				F581819EF4685E8345767161 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +72,7 @@
 				2DC251EE23A98A2600743E75 /* ContentView.swift */,
 				2DC251F023A98A2900743E75 /* Assets.xcassets */,
 				2DC251F523A98A2900743E75 /* LaunchScreen.storyboard */,
+				2D100F7023A9993000FD5773 /* MapView.swift */,
 				2DC251F823A98A2900743E75 /* Info.plist */,
 				2DC251EB23A98A2600743E75 /* StayAhead.xcdatamodeld */,
 				2DC251F223A98A2900743E75 /* Preview Content */,
@@ -78,6 +88,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		59695C70357C36C3275FE289 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				126736DEB4208A8693575879 /* Pods-StayAhead.debug.xcconfig */,
+				0660223C4ED9560802C78C4B /* Pods-StayAhead.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F581819EF4685E8345767161 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F113086B0B3D813A4332D8E /* Pods_StayAhead.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DC251FB23A98A2900743E75 /* Build configuration list for PBXNativeTarget "StayAhead" */;
 			buildPhases = (
+				2209703AA7C1DF9810546FBC /* [CP] Check Pods Manifest.lock */,
 				2DC251E023A98A2600743E75 /* Sources */,
 				2DC251E123A98A2600743E75 /* Frameworks */,
 				2DC251E223A98A2600743E75 /* Resources */,
+				EED0EFF57CFE6C4C457D2394 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,6 +173,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2209703AA7C1DF9810546FBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StayAhead-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EED0EFF57CFE6C4C457D2394 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StayAhead/Pods-StayAhead-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StayAhead/Pods-StayAhead-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StayAhead/Pods-StayAhead-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2DC251E023A98A2600743E75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -151,6 +222,7 @@
 			files = (
 				2DC251E823A98A2600743E75 /* AppDelegate.swift in Sources */,
 				2DC251ED23A98A2600743E75 /* StayAhead.xcdatamodeld in Sources */,
+				2D100F7123A9993000FD5773 /* MapView.swift in Sources */,
 				2DC251EF23A98A2600743E75 /* ContentView.swift in Sources */,
 				2DC251EA23A98A2600743E75 /* SceneDelegate.swift in Sources */,
 			);
@@ -286,12 +358,14 @@
 		};
 		2DC251FC23A98A2900743E75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 126736DEB4208A8693575879 /* Pods-StayAhead.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"StayAhead/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StayAhead/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,12 +379,14 @@
 		};
 		2DC251FD23A98A2900743E75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0660223C4ED9560802C78C4B /* Pods-StayAhead.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"StayAhead/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StayAhead/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -10,7 +10,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { geometry in
+            VStack {
+                MapView()
+                
+                HStack {
+                    Text("Start")
+                    Text("End")
+                    Text("Arrival Time")
+                }
+            }
+        }
+        
+        
     }
 }
 
