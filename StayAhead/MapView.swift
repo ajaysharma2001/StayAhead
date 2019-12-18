@@ -34,7 +34,7 @@ struct MapView: UIViewRepresentable {
         // coordinate -33.86,151.20 at zoom level 6.
 
         
-        let camera = GMSCameraPosition.camera(withLatitude: 43.477768, longitude: -80.555584, zoom: 14.5)
+        let camera = GMSCameraPosition.camera(withLatitude: 43.47, longitude: -80.548, zoom: 14.5)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
 
         mapView.delegate = context.coordinator
