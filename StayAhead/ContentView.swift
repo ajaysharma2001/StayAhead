@@ -15,7 +15,14 @@ import MapKit
 struct ContentView: View {
     @State var setStart: Bool
     @State var setEnd: Bool
-    @State var wakeUp = Date()
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }
+    
+    @State var selectedDate = Date()
     
     var body: some View {
         GeometryReader { geometry in
@@ -82,13 +89,27 @@ struct ContentView: View {
                 }//end of HStack - Start & End Buttons
                 
                 //HStack - Arrival Time Date-Picker
-                HStack{
+                /*HStack{
                     Form {
                         DatePicker("Enter an arrival time", selection:
                             self.$wakeUp, in: Date()...)
-                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 70)
+                    }//.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 70)
                     
+                }*/
+                
+                VStack{
+                    Text("Select desired arrival time")
+                        .font(.title)
+                        .minimumScaleFactor(0.7)
+                    DatePicker(selection: self.$selectedDate, in: Date()...) {
+                        Text("")
+                    }.padding(30)
+                    
+                    Text("Selected Date is \(self.selectedDate, formatter: self.dateFormatter)")
+                        .font(.title)
+                        .minimumScaleFactor(0.7)
                 }
+                
                 
                 //HStack - Travel Time Label & TextView (updated)
                 HStack{
