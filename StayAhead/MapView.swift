@@ -22,8 +22,6 @@ struct MapView: UIViewRepresentable {
         Coordinator(start: setStart)
     }
     
-    let startTap = CLLocationCoordinate2DMake(43.47117332874348, -80.54760977625847)
-    let endTap = CLLocationCoordinate2DMake(43.47350912482179, -80.54404780268669)
     
 
     /// Creates a `UIView` instance to be presented.
@@ -79,8 +77,8 @@ struct MapView: UIViewRepresentable {
             startMarker.title = "Start"
             endMarker.title = "End"
             
-            startMarker.icon = GMSMarker.markerImage(with: .red)
-            endMarker.icon = GMSMarker.markerImage(with: .blue)
+            startMarker.icon = GMSMarker.markerImage(with: .blue)
+            endMarker.icon = GMSMarker.markerImage(with: .red)
             
             startMarker.map = mapView
             endMarker.map = mapView
