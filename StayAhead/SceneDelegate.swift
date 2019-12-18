@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import UserNotifications
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -25,6 +26,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let contentView = ContentView(setStart: true, setEnd: false).environment(\.managedObjectContext, context)
+        
+        let center = UNUserNotificationCenter.current()
+
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                let center = UNUserNotificationCenter.current()
+
+                let content = UNMutableNotificationContent()
+                content.title = "GO GO GO"
+                content.body = "You need to leave now to get to your destination on time!"
+                content.categoryIdentifier = "alarm"
+                content.userInfo = ["customData": "fizzbuzz"]
+                content.sound = UNNotificationSound.default
+
+                var dateComponents = DateComponents()
+                dateComponents.hour = 17
+                dateComponents.minute = 12
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                center.add(request)
+                
+                print("Yay")
+            } else {
+                print("D'oh")
+            }
+        }
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
