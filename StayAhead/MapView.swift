@@ -18,9 +18,10 @@ struct MapView: UIViewRepresentable {
     let marker : GMSMarker = GMSMarker()
     @State var setStart: Binding<Bool>
     @State var setEnd: Binding<Bool>
+    @State var travelTime: Binding<String>
     
     func makeCoordinator() -> MapView.Coordinator {
-        Coordinator(start: setStart)
+        Coordinator(start: setStart, time: travelTime)
     }
     
     
@@ -49,9 +50,11 @@ struct MapView: UIViewRepresentable {
     class Coordinator: NSObject, GMSMapViewDelegate {
         
         @Binding var start: Bool
+        @Binding var time: String
         
-        init(start: Binding<Bool>) {
+        init(start: Binding<Bool>, time: Binding<String>) {
             _start = start
+            _time = time
         }
         
 
@@ -103,7 +106,7 @@ struct MapView: UIViewRepresentable {
                                 let info = legs[0] as! NSDictionary
                                 let duration = info["duration"] as! NSObject
                                 print(duration.value(forKey: "text") as! String)
-                                travelTime = duration.value(forKey: "text") as! String
+                                self.time = duration.value(forKey: "text") as! String
                                 let routeOverviewPolyline:NSDictionary = routes.value(forKey: "overview_polyline") as! NSDictionary
                                 let polyString = routeOverviewPolyline.object(forKey: "points") as! String
 

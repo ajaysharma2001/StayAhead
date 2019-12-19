@@ -10,11 +10,10 @@ import SwiftUI
 import GoogleMaps
 import MapKit
 
-//MKMapView().convert(<#T##point: CGPoint##CGPoint#>, toCoordinateFrom: <#T##UIView?#>)
-
 struct ContentView: View {
     @State var setStart: Bool
     @State var setEnd: Bool
+    @State var tripTime: String
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -28,7 +27,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             //VStack - Map and User Area
             VStack {
-                MapView(setStart: self.$setStart, setEnd: self.$setEnd)
+                MapView(setStart: self.$setStart, setEnd: self.$setEnd, travelTime: self.$tripTime)
                 
                 //HStack - Start & End Buttons
                 HStack {
@@ -114,7 +113,7 @@ struct ContentView: View {
                 
                 //HStack - Travel Time Label & TextView (updated)
                 HStack{
-                    Text("Your travel time is: ____________") //Insert variable for travelTime here when done using \(travelTime)
+                    Text("Your travel time is: " + self.tripTime) //Insert variable for travelTime here when done using \(travelTime)
                     
                 }
                 
@@ -132,6 +131,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(setStart: true, setEnd: false)
+        ContentView(setStart: true, setEnd: false, tripTime: "")
     }
 }
