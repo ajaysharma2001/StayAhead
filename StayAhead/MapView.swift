@@ -12,7 +12,6 @@ import UIKit
 import MapKit
 
 var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2DMake(0, 0), CLLocationCoordinate2DMake(0, 0)]
-var travelTime: String = "____________"
 
 struct MapView: UIViewRepresentable {
     let marker : GMSMarker = GMSMarker()

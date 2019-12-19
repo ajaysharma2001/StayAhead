@@ -26,6 +26,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             //VStack - Map and User Area
+            
             VStack {
                 MapView(setStart: self.$setStart, setEnd: self.$setEnd, travelTime: self.$tripTime)
                 
