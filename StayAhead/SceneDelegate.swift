@@ -41,9 +41,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 content.sound = UNNotificationSound.default
 
                 var dateComponents = DateComponents()
-                dateComponents.hour = 17
-                dateComponents.minute = 12
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                dateComponents.hour = 18
+                dateComponents.minute = 54
+
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                 center.add(request)
